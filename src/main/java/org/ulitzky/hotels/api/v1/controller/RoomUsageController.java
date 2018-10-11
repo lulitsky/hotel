@@ -29,7 +29,9 @@ public class RoomUsageController {
     @RequestMapping(method = RequestMethod.GET, produces="application/json")
     public List<RoomTypeUsageResource> getFlightPlan(@RequestParam(name = "freePremium", required=false, defaultValue = "0") Integer freePremiumRooms, 
     												 @RequestParam(name = "freeEconomy", required=false, defaultValue = "0") Integer freeEconomyRooms,
-    												 @RequestParam(name = "willingToPay", required=false, defaultValue = "[]") List<Integer> willingToPay) {
+    												 @RequestParam(name = "willingToPay", required=false) List<Integer> willingToPayInput) {
+    	
+    	List<Integer> willingToPay = (willingToPayInput == null) ? new LinkedList<>() : willingToPayInput;
         log.info("Getting rooms usage for free Premium = {}, free Economy = {}, willing to pay list {}", freePremiumRooms, freeEconomyRooms, willingToPay);
         
         Map<RoomType, Integer> availableRoomsMap = new HashMap<>();
