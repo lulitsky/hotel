@@ -19,12 +19,6 @@ public class RoomUsageData {
 		return result;
 	}
 	
-	public void addRoom(final int amount) {
-		this.totalIncome += amount;
-		this.numberOfRooms++;
-	}
-	
-	
 	public int getNumberOfRooms() {
 		return numberOfRooms;
 	}
